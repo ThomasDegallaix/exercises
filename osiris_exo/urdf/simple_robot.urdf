@@ -1,0 +1,148 @@
+<?xml version='1.0'?>
+<robot name="simple_robot">
+
+    <link name="base_footprint"/>
+
+    <joint name="base_link_joint" type="fixed">
+        <origin xyz="0.0 0 0.075" rpy="0 0 0"/>
+        <parent link="base_footprint"/>
+        <child link="base_link"/>
+    </joint>
+
+    <link name="base_link">
+        <visual>
+            <geometry>
+                <box size="0.4 0.2 0.1"/>
+            </geometry>
+        </visual>
+
+        <collision>
+            <geometry>
+                <box size="0.4 0.2 0.1"/>
+            </geometry>
+        </collision>
+    
+    </link>
+
+    <link name="left_front_wheel">
+        <visual>
+            <origin xyz="0 0 0" rpy="1.5707 0 0"/>
+            <geometry>
+            <cylinder radius="0.075" length="0.05"/>
+            </geometry>
+        </visual>
+
+        <collision>
+            <origin xyz="0 0 0" rpy="1.5707 0 0"/>
+            <geometry>
+            <cylinder radius="0.075" length="0.05"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="right_front_wheel">
+        <collision>
+            <origin xyz="0 0 0" rpy="1.5707 0 0"/>
+            <geometry>
+            <cylinder radius="0.075" length="0.05"/>
+            </geometry>
+        </collision>
+        <visual>
+            <origin xyz="0 0 0" rpy="1.5707 0 0"/>
+            <geometry>
+            <cylinder radius="0.075" length="0.05"/>
+            </geometry>
+        </visual>
+    </link>
+
+    <link name="left_rear_wheel">
+        <collision>
+        <origin xyz="0 0 0" rpy="1.5707 0 0"/>
+            <geometry>
+            <cylinder radius="0.075" length="0.05"/>
+            </geometry>
+        </collision>
+        <visual>
+        <origin xyz="0 0 0" rpy="1.5707 0 0"/>
+            <geometry>
+            <cylinder radius="0.075" length="0.05"/>
+            </geometry>
+        </visual>
+    </link>
+
+    <link name="right_rear_wheel">
+        <collision>
+        <origin xyz="0 0 0" rpy="1.5707 0 0"/>
+            <geometry>
+            <cylinder radius="0.075" length="0.05"/>
+            </geometry>
+        </collision>
+        <visual>
+            <origin xyz="0 0 0" rpy="1.5707 0 0"/>
+            <geometry>
+            <cylinder radius="0.075" length="0.05"/>
+            </geometry>
+        </visual>
+    </link>
+
+    <link name="lidar_link">
+        <inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001" />
+        </inertial>
+
+        <visual>
+            <geometry>
+            <cylinder radius="0.0508" length="0.18"/>
+            </geometry>
+        </visual>
+
+        <collision>
+            <geometry>
+            <cylinder radius="0.0508" length="0.18"/>
+            </geometry>
+        </collision>
+
+    </link>
+
+
+    <joint type="revolute" name="left_rear_wheel_joint">
+        <origin xyz="-0.15 0.13 0" rpy="0 0 0"/>
+        <parent link="base_link"/>
+        <child link="left_rear_wheel"/>
+        <limit upper="3.1415" lower="-3.1415" effort="30" velocity="5.0"/>
+        <axis xyz="0 1 0"/>
+    </joint>
+
+    <joint type="revolute" name="right_rear_wheel_joint">
+        <origin xyz="-0.15 -0.13 0" rpy="0 0 0"/>
+        <parent link="base_link"/>
+        <child link="right_rear_wheel"/>
+        <limit upper="3.1415" lower="-3.1415" effort="30" velocity="5.0"/>
+        <axis xyz="0 1 0"/>
+    </joint>
+
+    <joint type="revolute" name="left_front_wheel_joint">
+        <origin xyz="0.15 0.13 0" rpy="0 0 0"/>
+        <parent link="base_link"/>
+        <child link="left_front_wheel"/>
+        <limit upper="3.1415" lower="-3.1415" effort="30" velocity="5.0"/>
+        <axis xyz="0 1 0"/>
+    </joint>
+
+    <joint type="revolute" name="right_front_wheel_joint">
+        <origin xyz="0.15 -0.13 0" rpy="0 0 0"/>
+        <parent link="base_link"/>
+        <child link="right_front_wheel"/>
+        <limit upper="3.1415" lower="-3.1415" effort="30" velocity="5.0"/>
+        <axis xyz="0 1 0"/>
+    </joint>
+
+    <joint type="fixed" name="lidar_joint">
+        <origin xyz="0.15 0 0.05" rpy="0 0 0"/>
+        <parent link="base_link"/>
+        <child link="lidar_link"/>
+    </joint>
+
+
+</robot>
